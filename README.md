@@ -1,58 +1,66 @@
-# Log Analyzer and Extractor
+# LucidLogs: Log Analyzer and Extractor
 
-A lightweight and efficient Python utility designed to parse and analyze system log files. This script tallies the occurrences of different log levels (INFO, WARNING, ERROR) and automatically extracts critical entries into a consolidated, easy-to-read report.
+A lightweight, efficient Python utility designed to parse system log files, tally log levels (INFO, WARNING, ERROR), and extract critical error messages into a consolidated report. 
 
-This project demonstrates the effective use of Python's **Context Managers (`with` statement)**, ensuring safe file handling and preventing resource leaks. It also implements lazy evaluation (reading files line-by-line) to process large-scale log files without exhausting system memory (RAM).
+This project features both a core backend script for automated tasks and a Graphical User Interface (GUI) for easy desktop use. It demonstrates best practices in Python, including the use of Context Managers (`with` statements) for safe file handling, lazy evaluation for memory management, and a modular architecture.
 
 ---
 
 ## Features
 
-* **Test Log Generation:** Automatically creates a dummy `.log` file for immediate testing and validation.
-* **Memory-Efficient Processing:** Processes files line by line, ensuring smooth operation even with gigabyte-sized log files.
-* **Automated Error Extraction:** Isolates and compiles all `[ERROR]` messages into a dedicated output report.
-* **Zero External Dependencies:** Built entirely with the Python Standard Library, requiring no additional package installations.
+* **Graphical User Interface (GUI):** A clean, intuitive desktop interface built with `tkinter` for seamlessly selecting input files and defining output destinations.
+* **Memory-Efficient Processing:** Employs lazy evaluation to read logs line-by-line, allowing the processing of massive log files without exhausting system RAM.
+* **Automated Error Extraction:** Isolates all `[ERROR]` entries and compiles them into a dedicated, readable text report.
+* **Zero External Dependencies:** Built entirely using the Python Standard Library. No additional package installations via `pip` are required.
+* **Separation of Concerns:** The GUI (frontend) is completely decoupled from the processing logic (backend), ensuring code maintainability and scalability.
+
+---
+
+## Prerequisites
+
+* **Python 3.6 or higher** installed on your system.
+* *Note for Linux users:* While `tkinter` is included in standard Python installations on Windows and macOS, some Linux distributions package it separately. You may need to install it via your package manager (e.g., `sudo apt-get install python3-tk` on Debian/Ubuntu).
 
 ---
 
 ## Getting Started
 
-This project is designed to be ready to run out of the box. Since it relies solely on the standard library, there is no need to set up complex virtual environments or install packages via `pip`.
-
-### Prerequisites
-* **Python 3.6 or higher** installed on your machine (required for Type Hints and the `pathlib` module).
-
-### Execution
-
-1. **Clone the repository** or download the source code to your local machine:
+1. **Clone the repository:**
+   Download the source code to your local machine:
    ```bash
-   git clone [https://github.com/your-username/log-analyzer.git](https://github.com/your-username/log-analyzer.git)
-   cd log-analyzer
+   git clone [https://github.com/your-username/loglens.git](https://github.com/your-username/loglens.git)
+   cd loglens
    ```
 
-2. **Run the main script:**
-   Open your terminal in the project directory and execute the following command:
+2. **Run the Graphical Interface (GUI):**
+   To open the desktop application, execute:
+   ```bash
+   python interface.py
+   ```
+   Follow the on-screen prompts to select your target log file and the destination directory for the generated report.
+
+3. **Run the Command Line Script (CLI):**
+   If you prefer terminal execution or wish to integrate the tool into automated pipelines, run the core script directly:
    ```bash
    python analisador_logs.py
    ```
-
-3. **Check the output:**
-   Upon execution, the script will generate (or read) a `sistema.log` file and output the analysis into a new file named `relatorio_erros.txt` in the same directory.
+   *Note: Running the core script independently will automatically generate a sample `sistema.log` file in the directory for testing purposes.*
 
 ---
 
-## File Structure
+## Project Structure
 
-* `analisador_logs.py`: The main source code containing the parsing and extraction logic.
-* `sistema.log`: The sample log file automatically generated for testing purposes.
-* `relatorio_erros.txt`: The final output report generated after the script runs.
+* `analisador_logs.py`: The core processing logic and CLI execution script.
+* `interface.py`: The `tkinter`-based Graphical User Interface.
+* `sistema.log`: An auto-generated sample log (created when running the core script).
+* `relatorio_erros.txt`: The standard output report containing analysis summaries and extracted errors.
 
 ---
 
 ## Customization
 
-To analyze your own production log files instead of the test file:
-1. Open `analisador_logs.py` in your text editor.
-2. Comment out or remove the `gerar_log_de_exemplo(arquivo_log)` function call inside the `main()` block.
-3. Update the `arquivo_log` variable path to point to your actual log file.
+To use the CLI script with your own production logs rather than the test generator:
+1. Open `analisador_logs.py` in your preferred code editor.
+2. Comment out the `gerar_log_de_exemplo(arquivo_log)` function call within the `main()` block.
+3. Update the `arquivo_log` variable to point to the absolute or relative path of your target log file.
 ```
