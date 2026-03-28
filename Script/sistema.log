@@ -1,0 +1,7 @@
+[2023-10-25 10:00:01] [INFO] Sistema iniciado com sucesso.
+[2023-10-25 10:05:12] [WARNING] Uso de memória acima de 70%.
+[2023-10-25 10:15:30] [INFO] Usuário 'admin' fez login.
+[2023-10-25 10:20:45] [ERROR] Falha na conexão com o banco de dados!
+[2023-10-25 10:21:00] [INFO] Tentando reconectar...
+[2023-10-25 10:21:05] [ERROR] Timeout ao aguardar resposta da API.
+[2023-10-25 10:30:00] [INFO] Backup diário concluído.
